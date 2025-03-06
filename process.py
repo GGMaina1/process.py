@@ -127,7 +127,7 @@
 #      </div>
 #  {% endfor %}
 
-#deleting an appointment
+#DELETING AN APPOINTMENT
 #define id---
 #in views.py
 #def delete (request,id):
@@ -143,11 +143,39 @@
 #    <i class="bi bi-trash"></i>Delete
 #</a>
 
+#EDITING AN APPOINTMENT
+#at views.py
+#import----from django.shortcuts import render, redirect, get_object_or_404
+#def edit (request,id):
+#  appointment = get_object_or_404(Appointment,id=id)
+#  if request.method == "POST":
+#       appointment.name = request.POST.get('name')
+#       appointment.email = request.POST.get('email')
+#       appointment.phone = request.POST.get('phone')
+#       appointment.date = request.POST.get('date')
+#       appointment.department = request.POST.get('department')
+#       appointment.doctor = request.POST.get('doctor')
+#       appointment.message = request.POST.get('message')
+#       appointment.save()
+#       return redirect('/show/')
+#   else:
+#      return render(request,'edit.html',{'appointment':appointment})
 
+#at urls.py
+#path('edit/<int:id>', views.edit,name='edit'),
 
+#at show.html
+#       <a href="{% url 'edit' x.id %}"class="me-5 text-warning">
+#                  <i  class="bi bi-pencil"></i>Edit
 
-
-
+#at edit.html
+# <input type="text" name="name" value="{{ appointment.name }}" class="form-control" id="name" placeholder="Your Name" required="">
+#           </div>
+#          <div class="col-md-4 form-group mt-3 mt-md-0">
+#            <input type="email" class="form-control" value="{{ appointment.email }}" name="email" id="email" placeholder="Your Email" required="">
+#          </div>
+#          <div class="col-md-4 form-group mt-3 mt-md-0">
+#            <input type="tel" class="form-control" name="phone" value="{{ appointment.phone }}" id="phone" placeholder="Your Phone" required="">
 
 
 
